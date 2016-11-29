@@ -7,5 +7,6 @@ trait HttpService {
 }
 
 object HttpService {
-  def apply(pf: PartialFunction[HttpRequest, HttpResponse]): HttpService = (req: HttpRequest) => pf.applyOrElse[HttpRequest, HttpResponse](req, _ => NotFound())
+  def apply(pf: PartialFunction[HttpRequest, HttpResponse]): HttpService =
+    (req: HttpRequest) => pf.applyOrElse[HttpRequest, HttpResponse](req, _ => NotFound())
 }

@@ -12,7 +12,7 @@ trait EmptyResponseSerializer extends Any with ResponseSerializer{
 
 
 trait EntityResponseSerializer  extends Any with EmptyResponseSerializer{
-  def apply[A: EntitySerializer](body: A)(): HttpResponse = {
+  def apply[A: EntitySerializer](body: A): HttpResponse = {
     val serializer = implicitly[EntitySerializer[A]]
     HttpResponse(status, serializer.serialize(body))
   }

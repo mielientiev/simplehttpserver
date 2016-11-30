@@ -40,8 +40,11 @@ object SimpleSunHttpServer extends HttpServer {
       val body = response.body.getBytes
       httpExchange.sendResponseHeaders(response.status.code, body.length)
       val os = httpExchange.getResponseBody
-      os.write(body)
-      os.close()
+      try {
+        os.write(body)
+      } finally {
+        os.close()
+      }
     }
 
     override def handle(httpExchange: HttpExchange): Unit = {

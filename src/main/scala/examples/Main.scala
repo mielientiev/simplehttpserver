@@ -18,7 +18,7 @@ object Main {
 
 
   def main(args: Array[String]): Unit = {
-    val startedServer = SimpleSunHttpServer.create(9000).start(
+    SimpleSunHttpServer.create(9000).start(
       ("/", myService),
       ("/a/", nextService)
     )
